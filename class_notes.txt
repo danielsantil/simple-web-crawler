@@ -1,0 +1,11 @@
+url|searchterm|maxdepth|currentdepth
+
+worker solo busca en la profundidad especificada
+scrapea todo el texto plano y van guardando en results.txt
+si encuentra un <a> y currentdepth < maxdepth, invoca server.PutWork con el href del tag
+
+multiples threads:
+	-getwork
+	-saveresults
+	-putwork
+	-scrape
