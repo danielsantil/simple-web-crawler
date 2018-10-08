@@ -16,6 +16,9 @@ while not valid_url(url):
 max_depth = int(input('Profundidad: ') or  0)
 search = 'PUCMM'
 
-server = client.ServerProxy('http://localhost:9080/server')
-response = server.PutWork(url, search, max_depth)
-print(response)
+try:
+    server = client.ServerProxy('http://localhost:9080/server')
+    response = server.PutWork(url, search, max_depth)
+    print(response)
+except:
+    print('Error occurred trying to put work. Is server up?')
