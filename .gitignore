@@ -1,3 +1,4 @@
 virtualenv/*
 links.txt
 results.txt
+.DS_Store
