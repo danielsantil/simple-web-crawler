@@ -14,22 +14,19 @@ server = SimpleXMLRPCServer((host, port),
 
 queue = Queue()
 
-def PutWork(url, search, max_depth, current_depth='0'):
-    work = url + "|" + search + "|" + str(max_depth) + "|" + current_depth
+def PutWork(url, search, max_depth, current_depth=0):
+    work = url + "|" + search + "|" + str(max_depth) + "|" + str(current_depth)
     queue.put(work)
-    print(f'Work {work} received')
+    print(f'Work received: {work}')
     print(f'Queue size: {queue.qsize()}')
     return 'Trabajo recibido'
 
 def GetWork():
-    print(f'Queue size: {queue.qsize()}')
     if queue.empty():
         return 'Empty'
     el = queue.get(False, 1)
-
-    # temporary
-    queue.put(el)
-    # temporary
+    print(f'Work retrieved: {el}')
+    print(f'Queue size: {queue.qsize()}')
     return el
 
 server.register_function(PutWork)
